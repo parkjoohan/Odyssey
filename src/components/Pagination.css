@@ -10,6 +10,21 @@
     box-shadow: 2px 2px 2px 2px lightgrey;
 }
 
+.pages {
+    width: 12%;
+    display: flex;
+    align-items: center;
+}
+
+.pages > select {
+    width: 25%;
+    height: 35px;
+    padding: 0;
+    border-color: lightgray;
+    border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+    border: none;
+}
+
 .button {
     border: none;
     border-radius: 8px;

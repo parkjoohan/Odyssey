@@ -7,6 +7,14 @@ export default function Pagination({ total, limit, page, setPage }) {
     return (
         <>
             <nav className='nav'>
+                <div className='pages'>
+                    <p>페이지 당 행 : </p>
+                    <select name="category">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
                 {/* 이전 페이지 */}
                 <button className='button' onClick={() => setPage(page - 1)} disabled={page === 1}>&lt;</button>
                 {/* 페이지들 */}

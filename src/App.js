@@ -1,58 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import Productlist from './components/Productlist';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className='wrapper'>
+      <div className='search1'>
+        <p>상품 검색</p>
+      </div>
+      <div className='search2'>
+        <p>검색</p>
+        <select name="category">
+          <option value="">전체</option>
+          <option value="상품번호">상품번호</option>
+          <option value="상품명">상품명</option>
+          <option value="브랜드">브랜드</option>
+          <option value="상품내용">상품내용</option>
+        </select>
+        <input placeholder='입력하세요...' />
+        <button>조회</button>
+      </div>
+
+      <h4 className='total'>검색된 데이터 : 건</h4>
+
+      <div className='content'>
+        <div>상품번호</div>
+        <div>상품명</div>
+        <div>브랜드</div>
+        <div>상품내용</div>
+        <div>가격</div>
+        <div>평점</div>
+        <div>재고</div>
+      </div>
+      <Productlist />
+      <div className='navigation'>1</div>
+      <Counter />
     </div>
-  );
+  )
 }
 
 export default App;

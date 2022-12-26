@@ -4,7 +4,6 @@ import './Productlist.css';
 
 function Productlist({limit, page}) {
     const products = useSelector((state) => state.products.products);
-    console.log(products);
     const offset = (page - 1) * limit;
 
     return (

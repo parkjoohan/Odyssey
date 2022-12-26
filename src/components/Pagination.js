@@ -1,15 +1,25 @@
+import { useDispatch } from 'react-redux';
 import './Pagination.css';
+import { limitActions } from "../app/feature/product/productsSlice";
 
 export default function Pagination({ total, limit, page, setPage }) {
     // 총 페이지 개수
     const numPages = Math.ceil(total / limit);
+    const dispatch = useDispatch();
 
+    function changeNum() {
+        // dispatch(limitActions.changeLimit({limit: 20}));
+        let categorySelect = document.getElementById("category");
+        var valueNum = categorySelect.options[document.getElementById("category").selectedIndex].value;
+        dispatch(limitActions.changeLimit({limit: valueNum}))
+    }
+    
     return (
         <>
             <nav className='nav'>
                 <div className='pages'>
                     <p>페이지 당 행 : </p>
-                    <select name="category">
+                    <select id="category" onChange={changeNum}>
                         <option value="10">10</option>
                         <option value="20">20</option>
                         <option value="50">50</option>

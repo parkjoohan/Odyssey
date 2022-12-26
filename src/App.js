@@ -7,20 +7,20 @@ import Productlist from './components/Productlist';
 
 function App() {
   const products = useSelector((state) => state.products.products);
+  const limitnum = useSelector((state) => state.limit.limit);
   const [datas, setDatas] = useState([]);     // 상품 개수
-  const [limit, setLimit] = useState(10);      // 페이지에사 보이는 상품의 개수
+  const [limit, setLimit] = useState(limitnum);      // 페이지에사 보이는 상품의 개수
   const [page, setPage] = useState(1);        // 현재 페이지 번호
   
   useEffect(() => {
     setDatas(products);
-  }, [products]);
+    setLimit(limitnum);
+  }, [products, limitnum]);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-
-  
 
   return (
     <div className='wrapper'>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import { filterByAll, filterByBrand, filterByDescription, filterByName, getById, getProducts } from './app/feature/product/productsSlice';
+import { filterByAll, filterByBrand, filterByDescription, filterByName, getProducts } from './app/feature/product/productsSlice';
 import Pagination from './components/Pagination';
 import Productlist from './components/Productlist';
 
@@ -12,18 +12,6 @@ function App() {
   const [limit, setLimit] = useState(limitnum);      // 페이지에사 보이는 상품의 개수
   const [page, setPage] = useState(1);        // 현재 페이지 번호
   const [searcfInfo, setSearchInfo] = useState("");
-
-  // function geybyid() {
-  //   let categorySelect = document.getElementById("category");
-  //   var valueNum = categorySelect.options[document.getElementById("category").selectedIndex].value;
-    
-  //   if (valueNum === "상품명") 
-  //     dispatch(filterByName(searcfInfo))
-  //   else if (valueNum === "브랜드") 
-  //     dispatch(filterByBrand(searcfInfo))
-  //   else if (valueNum === "상품내용") 
-  //     dispatch(filterByDescription(searcfInfo))
-  // }
 
   function enterkey() {
     if (window.event.keyCode === 13) {

@@ -34,7 +34,7 @@ export default function Pagination({ total, limit, page, setPage }) {
                     </button>
                 ))}
                 {/* 다음 페이지 */}
-                <button className='button'  onClick={() => setPage(page + 1)} disabled={page === numPages}>&gt;</button>
+                <button className='button' onClick={() => setPage(page + 1)} disabled={page === numPages}>&gt;</button>
             </nav>
         </>
     );

@@ -1,16 +1,15 @@
 import { createSlice, createAsyncThunk, configureStore} from "@reduxjs/toolkit";
 import axios from "axios";
 
-const URL = 'https://dummyjson.com/products?limit=100';
-
 const initialState = {
+    productslist:[],
     products: [],
     limit: 10,
 };
 
 export const getProducts = createAsyncThunk('products/getProducts',async ()=>{
     try {
-        const res = await axios.get(URL);
+        const res = await axios.get(`https://dummyjson.com/products?limit=100`);
         return res.data.products;
     } catch (error) {
         return error.message;
@@ -20,13 +19,27 @@ export const getProducts = createAsyncThunk('products/getProducts',async ()=>{
 export const productsSlice = createSlice({
     name: "products",
     initialState,
-    reducers: {},
+    reducers: {
+        filterByAll: (state, action) => {
+            state.products = state.productslist.filter((product)=> {return (product.title.includes(action.payload) || product.brand.includes(action.payload) || product.description.includes(action.payload))})
+        },
+        filterByName: (state, action) => {
+            state.products = state.productslist.filter((product)=> {return product.title.includes(action.payload)})
+        },
+        filterByBrand: (state, action) => {
+            state.products = state.productslist.filter((product)=> {return product.brand.includes(action.payload)})
+        },
+        filterByDescription: (state, action) => {
+            state.products = state.productslist.filter((product)=> {return product.description.includes(action.payload)})
+        },
+    },
     extraReducers(builder){
         builder
         .addCase(getProducts.pending,(state,action)=>{
         })
         .addCase(getProducts.fulfilled,(state,action)=>{
             state.products = action.payload
+            state.productslist = action.payload
         })
         .addCase(getProducts.rejected,(state,action)=>{
             state.message=action.error.message
@@ -46,3 +59,5 @@ export const limitSlice = createSlice({
 
 export const productActions = productsSlice.actions;
 export const limitActions = limitSlice.actions;
+
+export const { filterByAll, filterByName, filterByBrand, filterByDescription } = productsSlice.actions;

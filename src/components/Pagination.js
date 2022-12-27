@@ -9,8 +9,8 @@ export default function Pagination({ total, limit, page, setPage }) {
 
     function changeNum() {
         // dispatch(limitActions.changeLimit({limit: 20}));
-        let categorySelect = document.getElementById("category");
-        var valueNum = categorySelect.options[document.getElementById("category").selectedIndex].value;
+        let categorySelect = document.getElementById("rows");
+        var valueNum = categorySelect.options[document.getElementById("rows").selectedIndex].value;
         dispatch(limitActions.changeLimit({limit: valueNum}))
     }
     
@@ -19,7 +19,7 @@ export default function Pagination({ total, limit, page, setPage }) {
             <nav className='nav'>
                 <div className='pages'>
                     <p>페이지 당 행 : </p>
-                    <select id="category" onChange={changeNum}>
+                    <select id="rows" onChange={changeNum}>
                         <option value="10">10</option>
                         <option value="20">20</option>
                         <option value="50">50</option>

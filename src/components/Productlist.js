@@ -16,7 +16,7 @@ function Productlist({limit, page}) {
                     <div>{product.brand}</div>
                     <div>
                         <div>
-                        {product.description}
+                        {product.description.substr(0,40).concat("...")}
                         </div>
                     </div>
                     <div>{product.price}</div>

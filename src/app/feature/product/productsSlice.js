@@ -17,7 +17,7 @@ export const getProducts = createAsyncThunk('products/getProducts',async ()=>{
     }
 })
 
-const productsSlice = createSlice({
+export const productsSlice = createSlice({
     name: "products",
     initialState,
     reducers: {},
@@ -34,7 +34,7 @@ const productsSlice = createSlice({
     }
 });
 
-const limitSlice = createSlice({
+export const limitSlice = createSlice({
     name: "limit",
     initialState,
     reducers: {
@@ -44,13 +44,5 @@ const limitSlice = createSlice({
     },
 });
 
-export const store = configureStore({
-    reducer: {
-        products: productsSlice.reducer,
-        limit: limitSlice.reducer,
-    },
-});
-
-// export default productsSlice.reducer;
 export const productActions = productsSlice.actions;
 export const limitActions = limitSlice.actions;

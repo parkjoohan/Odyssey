@@ -1,10 +1,9 @@
-// import { configureStore } from "@reduxjs/toolkit"
-// import productsReducer from './feature/product/productsSlice';
-// import limitReducer from './feature/product/limitSlice';
+import { configureStore } from "@reduxjs/toolkit"
+import {productsSlice, limitSlice} from './feature/product/productsSlice';
 
-// export const store = configureStore({
-//     reducer: {
-//         products: productsReducer,
-//         limit: limitReducer,
-//     },
-// });
+export const store = configureStore({
+    reducer: {
+        products: productsSlice.reducer,
+        limit: limitSlice.reducer,
+    },
+});

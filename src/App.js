@@ -6,13 +6,14 @@ import Pagination from './components/Pagination';
 import Productlist from './components/Productlist';
 
 function App() {
-  const products = useSelector((state) => state.products.products);
-  const limitnum = useSelector((state) => state.limit.limit);
-  const [datas, setDatas] = useState([]);     // 상품 개수
-  const [limit, setLimit] = useState(limitnum);      // 페이지에사 보이는 상품의 개수
-  const [page, setPage] = useState(1);        // 현재 페이지 번호
+  const products = useSelector((state) => state.products.products);     // Redux에 저장된 데이터
+  const limitnum = useSelector((state) => state.limit.limit);           // 출력되는 데이터 개수
+  const [datas, setDatas] = useState([]);                               // 상품 개수
+  const [limit, setLimit] = useState(limitnum);                         // 페이지에사 보이는 상품의 개수
+  const [page, setPage] = useState(1);                                  // 현재 페이지 번호
   const [searcfInfo, setSearchInfo] = useState("");
 
+  // 검색 기능
   function search() {
     const searchInfos = document.getElementById('search').value;
     let categorySelect = document.getElementById("category");
@@ -29,17 +30,20 @@ function App() {
       dispatch(filterByAll(searcfInfo))
   }
 
+  // 검색 기능 (엔터키)
   function enterkey() {
     if (window.event.keyCode === 13) {
       search()
     }
   }
 
+  // 초기 데이터 불러오기
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
   
+  // 초기 데이터, 출력하는 데이터 개수
   useEffect(() => {
     setDatas(products);
     setLimit(limitnum);
@@ -74,7 +78,10 @@ function App() {
         <div>재고</div>
       </div>
 
+      {/* 출력 데이터 */}
       <Productlist limit={limit} page={page} />
+
+      {/* 페이지네이션 */}
       <Pagination total={datas.length} limit={limit} page={page} setPage={setPage} />
     </div>
   )

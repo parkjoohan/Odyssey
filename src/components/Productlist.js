@@ -8,21 +8,22 @@ function Productlist({ limit, page }) {
 
     return (
         <>
-        {
-            products.slice(offset, offset + limit).map((product, index) => (
-                <div className='products_wrap' key={index}>
-                    <div>{product.id}</div>
-                    <div>{product.title}</div>
-                    <div>{product.brand}</div>
-                    <div>
+            {
+                // 출력 개수에 맞게 행 출력
+                products.slice(offset, offset + limit).map((product, index) => (
+                    <div className='products_wrap' key={index}>
+                        <div>{product.id}</div>
+                        <div>{product.title}</div>
+                        <div>{product.brand}</div>
                         <div>
-                        {product.description.substr(0,40).concat("...")}
+                            <div>
+                            {product.description.substr(0,40).concat("...")}
+                            </div>
                         </div>
+                        <div>{product.price}</div>
+                        <div>{product.rating}</div>
+                        <div>{product.stock}</div>
                     </div>
-                    <div>{product.price}</div>
-                    <div>{product.rating}</div>
-                    <div>{product.stock}</div>
-                </div>
             ))
         }
         </>

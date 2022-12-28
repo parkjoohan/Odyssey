@@ -7,8 +7,8 @@ export default function Pagination({ total, limit, page, setPage }) {
     const numPages = Math.ceil(total / limit);
     const dispatch = useDispatch();
 
+    // 선택한 행의 수 전송
     function changeNum() {
-        // dispatch(limitActions.changeLimit({limit: 20}));
         let categorySelect = document.getElementById("rows");
         var valueNum = categorySelect.options[document.getElementById("rows").selectedIndex].value;
         dispatch(limitActions.changeLimit({limit: valueNum}))
@@ -17,6 +17,7 @@ export default function Pagination({ total, limit, page, setPage }) {
     return (
         <>
             <nav className='nav'>
+                {/* 페이지 출력 행 수 선택 */}
                 <div className='pages'>
                     <p>페이지 당 행 : </p>
                     <select id="rows" onChange={changeNum}>

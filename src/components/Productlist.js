@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './Productlist.css';
 
-function Productlist({limit, page}) {
+function Productlist({ limit, page }) {
     const products = useSelector((state) => state.products.products);
     const offset = (page - 1) * limit;
 

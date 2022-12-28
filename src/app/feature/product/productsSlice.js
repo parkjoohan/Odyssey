@@ -9,8 +9,9 @@ const initialState = {
 
 export const getProducts = createAsyncThunk('products/getProducts',async ()=>{
     try {
-        const res = await axios.get(`https://dummyjson.com/products?limit=100`);
+        const res = await axios.get(`https://dummyjson.com/products?limit=100`)
         return res.data.products;
+        
     } catch (error) {
         return error.message;
     }
